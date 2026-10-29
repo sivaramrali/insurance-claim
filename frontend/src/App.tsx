@@ -1,4 +1,4 @@
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '';
 import { useEffect, useState } from 'react'
 import './App.css'
 
@@ -89,7 +89,7 @@ function App() {
   const [explanationError, setExplanationError] = useState('')
 
   useEffect(() => {
-    fetch('/api/v1/health')
+    fetch(`${API_BASE_URL}/api/v1/health`)
       .then(async (response) => {
         if (!response.ok) {
           throw new Error('Backend health check failed')
@@ -153,7 +153,7 @@ function App() {
 
     try {
       const response = await fetch(
-        '/api/v1/vehicle/explanations',
+        `${API_BASE_URL}/api/v1/vehicle/explanations`,
         {
           method: 'POST',
           headers: {
